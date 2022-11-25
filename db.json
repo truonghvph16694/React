@@ -1,11 +1,20 @@
 {
-  "cate": [
+  "products": [
     {
-      "authors": [
-        {
-          "id": 3997289,
-          "name": "Ca Tây",
-          "slug": "ca-tay"
-        }
-      ],
+      "id": 1,
+      "name": "Product A",
+      "image": "img.png",
+      "price": 200000,
+      "description": "abcdefgh"
+    },
+    {
+      "name": "Hoàng Văn Trường",
+      "image": {
+        "0": {}
+      },
+      "price": "4343",
+      "description": "abcdefewfrgrerfewrg",
+      "id": 3
     }
+  ]
+}

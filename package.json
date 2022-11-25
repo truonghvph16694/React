@@ -6,13 +6,18 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "json-server --w db.json"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.8.0",
+    "antd": "^5.0.1",
+    "axios": "^1.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.39.4",
-    "react-router-dom": "^6.4.3"
+    "react-router-dom": "^6.4.3",
+    "sider": "^0.0.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.24",
