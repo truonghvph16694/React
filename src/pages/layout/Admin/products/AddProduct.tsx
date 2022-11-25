@@ -27,7 +27,7 @@ const AddProduct = (props: AddProductProps) => {
     const onSubmit: SubmitHandler<Inputs> = (dataInput) => {
         props.onAdd(dataInput);
         // chuyển trang
-        navigate("/admin");
+        navigate("/admin/products");
     }
 
     // const onSubmit: SubmitHandler<IProduct> = (data) => { };

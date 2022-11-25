@@ -12,9 +12,10 @@ import UpdateCategory from "./pages/layout/Admin/category/UpdateCategory";
 import AddProduct from "./pages/layout/Admin/products/AddProduct";
 import UpdateProduct from "./pages/layout/Admin/products/UpdateProduct";
 import { IProduct } from "./interfaces/products";
-import { add, list, remove } from "./api/product";
+import { add, list, remove, update } from "./api/product";
 import ProductAdmin from "./pages/layout/Admin/products/ProductAdmin";
 import Admin from "./pages/layout/Admin/Admin";
+import CateManager from "./pages/layout/Admin/category/CateManager";
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -39,23 +40,30 @@ function App() {
     // rerender
     setProducts(products.filter(item => item.id !== _id));
   }
+  const onHandleUpdate = async (product: IProduct) => {
+    try {
+      // api
+      const { data } = await update(product);
+      // reREnder - 
+      // Tạo ra 1 vòng lặp, nếu item._id == _id sản phẩm vừa cập nhật (data), thì cập nhật ngược lại giữ nguyên
+      setProducts(products.map(item => item.id === data._id ? product : item))
+    } catch (error) {
+
+    }
+  }
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Admin />} />
         <Route path="product" element={<Product />} />
         <Route path="admin" element={<Admin />}>
-          <Route
-            path="products"
-            element={<ProductAdmin products={products} onRemove={onHandleRemove} />}
-          />
-          <Route path="category/add" element={<AddCategory />} />
-          <Route path="admin/category/edit" element={<UpdateCategory />} />
-          <Route
-            path="products/add"
-            element={<AddProduct onAdd={onHandleAdd} />}
-          />
-          <Route path="admin/product/edit" element={<UpdateProduct  />} />
+          <Route path="products" element={<ProductAdmin products={products} onRemove={onHandleRemove} />} />
+          <Route path="products/add" element={<AddProduct onAdd={onHandleAdd} />} />
+          <Route path="products/:_key/update" element={<UpdateProduct onUpdate={onHandleUpdate} />} />
+          <Route path="category" element={<CateManager />}>
+            <Route path="category/add" element={<AddCategory />} />
+            <Route path="admin/category/edit" element={<UpdateCategory />} />
+          </Route>
         </Route>
 
         <Route path="*" element={<NotFound />} />

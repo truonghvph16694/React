@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Button, Table, Popconfirm, message } from "antd";
+import { Button, Table, Popconfirm, message, Space } from "antd";
 import Column from "antd/es/table/Column";
 import { PlusCircleOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons"
 import { IProduct } from "../../../../interfaces/products";
@@ -38,7 +38,7 @@ const ProductAdmin = (props: ProductManagerProps) => {
                 <Column title="Hình Ảnh" dataIndex="image" key="image" ></Column>
                 <Column title="Giá" dataIndex="price" key="price" />
                 <Column title="Mô tả" dataIndex="description" key="description" />
-                <Column
+                {/* <Column
                     title="Action"
                     key="action"
                     render={(product) => {
@@ -57,11 +57,35 @@ const ProductAdmin = (props: ProductManagerProps) => {
                             </Popconfirm>
 
                         );
-
+                        <button><Link to={"/${product.key}/update"}></Link> Sửa </button>
                     }
 
                     }
-                ></Column>
+                ></Column> */}
+                <Column
+                    title="Action"
+                    key="action"
+                    render={(product) => (
+
+                        <Space size="middle">
+                            <button><Link to={`${product.key}/update`}>Sửa </Link> </button>
+                            <a><Popconfirm
+                                placement="top"
+                                title="Mày có muốn xóa không?"
+                                onConfirm={() => props.onRemove(product.key)}
+                                okText="Đồng Ý"
+                                cancelText="Cancel"
+                            >
+                                <Button type="primary" danger>
+                                    <DeleteOutlined />
+                                </Button>
+                            </Popconfirm></a>
+                        </Space>
+                    )}
+                />
+
+
+
             </Table>
         </div>
     )

@@ -1,20 +1,15 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "Product A",
-      "image": "img.png",
-      "price": 200000,
-      "description": "abcdefgh"
-    },
-    {
-      "name": "Hoàng Văn Trường",
-      "image": {
-        "0": {}
-      },
-      "price": "4343",
+      "name": "Hoàng Văn Trường update 2",
+      "image": "[object Object]",
+      "price": "354524",
       "description": "abcdefewfrgrerfewrg",
-      "id": 3
+      "id": 2
     }
+  ],
+  "category": [
+    {"name" : "Category A"}
   ]
+
 }
