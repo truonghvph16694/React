@@ -25,43 +25,26 @@ const ProductAdmin = (props: ProductManagerProps) => {
     ))} */}
 
             <Table
-                dataSource={props.products.map((item) => ({
-                    key: item.id,
-                    name: item.name,
-                    image: item.image,
-                    price: item.price,
-                    description: item.description
 
-                }))}
+
+
+                dataSource={
+                    props.products.map((item) => ({
+                        key: item.id,
+                        name: item.name,
+                        image: item.image,
+                        price: item.price,
+                        description: item.description
+
+                    }))
+                }
             >
+
                 <Column title="Tên Sản Phẩm" dataIndex="name" key="name" />
                 <Column title="Hình Ảnh" dataIndex="image" key="image" ></Column>
                 <Column title="Giá" dataIndex="price" key="price" />
                 <Column title="Mô tả" dataIndex="description" key="description" />
-                {/* <Column
-                    title="Action"
-                    key="action"
-                    render={(product) => {
-                        // console.log("product", product);
-                        return (
-                            <Popconfirm
-                                placement="top"
-                                title="Mày có muốn xóa không?"
-                                onConfirm={() => props.onRemove(product.key)}
-                                okText="Đồng Ý"
-                                cancelText="Cancel"
-                            >
-                                <Button type="primary" danger>
-                                    <DeleteOutlined />
-                                </Button>
-                            </Popconfirm>
 
-                        );
-                        <button><Link to={"/${product.key}/update"}></Link> Sửa </button>
-                    }
-
-                    }
-                ></Column> */}
                 <Column
                     title="Action"
                     key="action"
@@ -86,8 +69,8 @@ const ProductAdmin = (props: ProductManagerProps) => {
 
 
 
-            </Table>
-        </div>
+            </Table >
+        </div >
     )
 }
 
