@@ -1,8 +1,8 @@
 {
   "products": [
     {
-      "name": "Hoàng Văn Trường update 3",
-      "image": "[object Object]",
+      "name": "Hoàng Văn Trường update 4",
+      "image": "abc",
       "price": "354524",
       "description": "abcdefewfrgrerfewrg",
       "id": 2
@@ -14,13 +14,37 @@
       },
       "price": "354524",
       "description": "abcdefewfrgrerfewrg",
-      "id": 3
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "name": "Khuong chuc",
+      "image": {
+        "0": {}
+      },
+      "price": "354524",
+      "description": "abcdefewfrgrerfewrg",
+      "id": 6
     }
   ],
-  "category": [
+  "categories": [
     {
       "id": 1,
-      "name": "Category A update"
+      "name": "Category A update 4"
+    },
+    {
+      "name": "Category B",
+      "id": 2
+    },
+    {
+      "name": "Category C",
+      "id": 3
+    },
+    {
+      "name": "Category D",
+      "id": 4
     }
   ]
 }

@@ -18,7 +18,7 @@ const AddCategory = (props: AddCateProps) => {
     } = useForm<ICategory>();
     const navigate = useNavigate()
     const onSubmit: SubmitHandler<ICategory> = (dataInput) => {
-        console.log(dataInput);
+
 
         props.onAddCate(dataInput);
         navigate("/admin/category")

@@ -1,23 +1,23 @@
 import instance from "./instances";
 
 export const listCate = () => {
-    const url = `/category`;
+    const url = `/categories`;
     return instance.get(url)
 }
-export const createCate = (category:any) => {
-    const url = `/category`;
-    return instance.post(url,category)
+export const createCate = (categories:any) => {
+    const url = `/categories`;
+    return instance.post(url,categories)
 }
 export const removeCate = (_id: any) => {
-    const url = `/category/${_id}`;
+    const url = `/categories/${_id}`;
     return instance.delete(url);
 }
 
 export const readCate = (_key: any) => {
-    const url = `/category/${_key}`;
+    const url = `/categories/${_key}`;
     return instance.get(url);
 }
-export const updateCate = (category: any) => {
-    const url = `/category/${category.id}`;
-    return instance.patch(url, category);
+export const updateCate = (categories: any) => {
+    const url = `/categories/${categories.id}`;
+    return instance.patch(url, categories);
 }

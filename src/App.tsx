@@ -20,7 +20,7 @@ function App() {
   // const [count, setCount] = useState(0);
 
   const [products, setProducts] = useState<IProduct[]>([]);
-  const [category, setCategory] = useState<ICategory[]>([]);
+  const [categories, setCategories] = useState<ICategory[]>([]);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -30,11 +30,11 @@ function App() {
     getProducts();
   }, []);
   useEffect(() => {
-    const getCategory = async () => {
+    const getCategories = async () => {
       const { data } = await listCate();
-      setCategory(data);
+      setCategories(data);
     }
-    getCategory()
+    getCategories()
   }, []);
 
   const onHandleAdd = async (product: any) => {
@@ -48,35 +48,25 @@ function App() {
     setProducts(products.filter(item => item.id !== _id));
   }
   const onHandleUpdate = async (product: IProduct) => {
-    try {
-      // api
-      const { data } = await update(product);
-      // reREnder - 
-      // Tạo ra 1 vòng lặp, nếu item._id == _id sản phẩm vừa cập nhật (data), thì cập nhật ngược lại giữ nguyên
-      setProducts(products.map(item => item.id === data._id ? product : item))
-    } catch (error) {
-
-    }
+    const { data } = await update(product)
+    setProducts(products.map(item => item.id == data.id ? data : item));
   }
   //category
   const onHandleAddCate = async (category: any) => {
     const { data } = await createCate(category)
-    setCategory([...category, data])
+    setCategories([...categories, data])
   }
   const onHandRemoveCate = async (_id: number) => {
     removeCate(_id);
-    setCategory(category.filter(item => item.id !== _id))
+    setCategories(categories.filter(item => item.id !== _id))
   }
   const onHandleUpdateCategory = async (category: ICategory) => {
-    try {
-      // api
-      const { data } = await updateCate(category);
-      // reREnder - 
-      // Tạo ra 1 vòng lặp, nếu item._id == _id sản phẩm vừa cập nhật (data), thì cập nhật ngược lại giữ nguyên
-      setCategory(category.map(cate => cate.id === data._id ? category : cate))
-    } catch (error) {
 
-    }
+    // api
+    const { data } = await updateCate(category);
+    // reREnder - 
+    // Tạo ra 1 vòng lặp, nếu item._id == _id sản phẩm vừa cập nhật (data), thì cập nhật ngược lại giữ nguyên
+    setCategories(categories.map(cate => cate.id == cate.id ? category : cate))
   }
 
   return (
@@ -88,7 +78,7 @@ function App() {
           <Route path="products" element={<ProductAdmin products={products} onRemove={onHandleRemove} />} />
           <Route path="products/add" element={<AddProduct onAdd={onHandleAdd} />} />
           <Route path="products/:_key/update" element={<UpdateProduct onUpdate={onHandleUpdate} />} />
-          <Route path="category" element={<CateManager onRemoveCate={onHandRemoveCate} category={category} />} />
+          <Route path="category" element={<CateManager onRemoveCate={onHandRemoveCate} category={categories} />} />
           <Route path="category/add" element={<AddCategory onAddCate={onHandleAddCate} />} />
           <Route path="category/:_key/update" element={<UpdateCategory onUpdateCategory={onHandleUpdateCategory} />} />
         </Route>

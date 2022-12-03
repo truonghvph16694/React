@@ -41,7 +41,7 @@ const ProductAdmin = (props: ProductManagerProps) => {
             >
 
                 <Column title="Tên Sản Phẩm" dataIndex="name" key="name" />
-                <Column title="Hình Ảnh" dataIndex="image" key="image" ></Column>
+                <Column title="Hình Ảnh" dataIndex="image" key="image"></Column>
                 <Column title="Giá" dataIndex="price" key="price" />
                 <Column title="Mô tả" dataIndex="description" key="description" />
 
